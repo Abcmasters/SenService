@@ -7,12 +7,32 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Login</ion-title>
+    <ion-title>Anmelden</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <div padding>
+  <form (ngSubmit)="userverify(bn, pw)">
 
+    <ion-item>
+      <ion-label floating>Benutzername</ion-label>
+      <ion-input type="text" [(ngModel)]="bn" name="bn" value=""></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Passwort</ion-label>
+      <ion-input type="password" [(ngModel)]="pw" name="pw" value=""></ion-input>
+    </ion-item>
+
+    <button ion-button block >Login</button>
+  </form>
+
+
+    <button ion-button block (click)="nextPage()">
+      Registrierung
+    </button>
+  </div>
 </ion-content>

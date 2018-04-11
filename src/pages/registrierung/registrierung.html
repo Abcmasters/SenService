@@ -1,0 +1,41 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Registrierung</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form (ngSubmit)="addTable(vname, n, bn, m, pw)">
+
+    <ion-item>
+      <ion-label floating>Vorname</ion-label>
+      <ion-input type="text" [(ngModel)]="vname" name="vname" value=""></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Nachname</ion-label>
+      <ion-input type="text" [(ngModel)]="n" name="n" value=""></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Benutzername</ion-label>
+      <ion-input type="text" [(ngModel)]="bn" name="bn" value=""></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="text" [(ngModel)]="m" name="m" value=""></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>Passwort</ion-label>
+      <ion-input type="password" [(ngModel)]="pw" name="pw" value=""></ion-input>
+    </ion-item>
+
+    <button ion-button block >Registrieren</button>
+  </form>
+</ion-content>
