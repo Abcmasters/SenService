@@ -27,7 +27,7 @@ export class LoginPage {
         var url = "http://shop2.iwslabor.de/api/auth.php";
         var param = JSON.stringify({ bn: bn, pword:pw});
         this.data = this.http.post(url, param);
-        this.data.subscribe(data => { if(data.Passwort = 'Valide'){ this.navCtrl.setRoot(HomePage)}});
+        this.data.subscribe(data => { console.log(data.Passwort); if(data.Passwort == 'Valide'){this.navCtrl.setRoot(HomePage)}});
 
   }
 
