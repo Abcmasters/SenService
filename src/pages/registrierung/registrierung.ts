@@ -4,6 +4,7 @@ import { NetworkEngineProvider} from "../../providers/network-engine/network-eng
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import {LoginPage} from "../login/login";
+import { AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the RegistrierungPage page.
@@ -19,7 +20,7 @@ import {LoginPage} from "../login/login";
 })
 export class RegistrierungPage {
 responsetext:any;
-  constructor(public navCtrl: NavController, public network: NetworkEngineProvider, public formbuilder: FormBuilder) {
+  constructor(public navCtrl: NavController, public network: NetworkEngineProvider, public formbuilder: FormBuilder , private alertCtrl: AlertController) {
 
 
 
@@ -35,7 +36,12 @@ this.network.writeTable(vname,n,bn,m,pw).then(data =>
       console.log("Ich habe folgendes erhalten : " + JSON.stringify(data));
       this.responsetext="" + JSON.stringify(data);
     })
-
+      let alert = this.alertCtrl.create({
+          title: 'Erfolgreich!',
+          subTitle: 'Account wurde erstellt!',
+          buttons: ['Ok']
+      });
+      alert.present();
  this.navCtrl.pop();
   }
 

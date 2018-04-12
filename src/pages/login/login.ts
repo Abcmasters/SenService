@@ -4,6 +4,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RegistrierungPage} from "../registrierung/registrierung";
 import {NetworkEngineProvider} from "../../providers/network-engine/network-engine";
 import {HomePage} from "../home/home";
+import { AlertController } from 'ionic-angular';
+
 
 /**
  * Generated class for the LoginPage page.
@@ -20,14 +22,19 @@ import {HomePage} from "../home/home";
 export class LoginPage {
     responsetext:any;
     data:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public network: NetworkEngineProvider, public http: HttpClient) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public network: NetworkEngineProvider, public http: HttpClient  , private alertCtrl: AlertController) {
   }
     userverify(bn, pw) {
 
         var url = "http://shop2.iwslabor.de/api/auth.php";
         var param = JSON.stringify({ bn: bn, pword:pw});
         this.data = this.http.post(url, param);
-        this.data.subscribe(data => { console.log(data.Passwort); if(data.Passwort == 'Valide'){this.navCtrl.setRoot(HomePage)}});
+        this.data.subscribe(data => { console.log(data.Passwort); if(data.Passwort == 'Valide'){this.navCtrl.setRoot(HomePage)} else{let alert = this.alertCtrl.create({
+            title: 'Fehlgeschlagen!',
+            subTitle: 'Benutzername oder Passwort falsch!',
+            buttons: ['Ok']
+        });
+            alert.present();}});
 
   }
 
