@@ -20,10 +20,14 @@ import { AlertController } from 'ionic-angular';
   templateUrl: 'login.html',
 })
 export class LoginPage {
+    splash = true;
     responsetext:any;
     data:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public network: NetworkEngineProvider, public http: HttpClient  , private alertCtrl: AlertController) {
   }
+    ionViewDidLoad() {
+        setTimeout(() => this.splash = false, 4000);
+    }
     userverify(bn, pw) {
 
         var url = "http://shop2.iwslabor.de/api/auth.php";
@@ -42,8 +46,6 @@ export class LoginPage {
 nextPage(){
       this.navCtrl.push(RegistrierungPage);
 }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
+
 
 }
