@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
+import { map, catchError } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
 
 /*
@@ -30,14 +31,30 @@ result:any;
 
   }
 
+    private apiUrl = 'http://shop2.iwslabor.de/api/read_angebote.php/';
+    getCountries(): Observable<any[]> {
+        return this.http.get(this.apiUrl).pipe(
+            map(this.extractData),
+            catchError(this.handleError)
+        );
+    }
 
-  userverify(bn, pw) {
+    private extractData(res: Response) {
+        let body = res;
+        return body || {};
+    }
 
-      let url = "http://shop2.iwslabor.de/api/auth.php";
-      var param = JSON.stringify({ bn: bn, pword:pw});
-      let request = this.http.post(url, param).subscribe(data => {this.result = data;});
+    private handleError (error: Response | any) {
+        let errMsg: string;
+        if (error instanceof Response) {
+            const err = error || '';
+            errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+        } else {
+            errMsg = error.message ? error.message : error.toString();
+        }
+        console.error(errMsg);
+        return Observable.throw(errMsg);
+    }
 
 
-
-  }
 }
