@@ -17,5 +17,5 @@ email:any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
   }
-    ionViewDidLoad() { this.bname = this.navParams.get('Benutzername');this.nname = this.navParams.get('Nachname');this.nname = this.navParams.get('Vorname');this.email = this.navParams.get('Mail'); }
+    ionViewDidLoad() { this.bname = this.navParams.get('Benutzername');this.nname = this.navParams.get('Nachname');this.vname = this.navParams.get('Vorname');this.email = this.navParams.get('Mail'); }
 }
