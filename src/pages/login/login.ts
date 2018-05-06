@@ -20,7 +20,7 @@ import { AlertController } from 'ionic-angular';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-    splash = true;
+    splash = false;
     responsetext:any;
     data:any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public network: NetworkEngineProvider, public http: HttpClient  , private alertCtrl: AlertController) {

@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RegistrierungPage} from "../registrierung/registrierung";
 import {NetworkEngineProvider} from "../../providers/network-engine/network-engine";
-import { AlertController } from 'ionic-angular';
 import {HttpClient} from "@angular/common/http";
+import { AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-home',
@@ -18,13 +18,18 @@ email:any;
 Angebot: string[];
 errorMessage: string;
 data:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient  ,  public network: NetworkEngineProvider) {
+constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient  ,  public network: NetworkEngineProvider, private alertCtrl: AlertController) {
   }
 
     getAngebote() {
         this.network.getAngebote()
             .subscribe(
-                angebot => this.Angebot = angebot,
+                angebot => {  if(this.Angebot !=[]){let alert = this.alertCtrl.create({
+                    title: 'Oh nein! :(',
+                    subTitle: 'Heute noch kein Angebot wir haben. Warten du musst!',
+                    buttons: ['Ok']
+                });
+                    alert.present();} else{this.Angebot = angebot}},
                 error =>  this.errorMessage = <any>error);
     }
     ionViewDidLoad() {this.getAngebote();
@@ -37,5 +42,10 @@ data:any;
         this.data.subscribe(data => {  console.log(data)
         });
         this.getAngebote();
+        let alert = this.alertCtrl.create({
+            title: 'Das hat funktioniert!',
+            subTitle: 'Weitere Informationen kommen in einer seperaten Mail!',
+            buttons: ['Ok']});
+    alert.present();
     }
 }

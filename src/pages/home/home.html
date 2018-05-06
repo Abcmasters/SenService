@@ -10,12 +10,16 @@
 <ion-content padding>
   <h3>Angebote</h3>
     <ion-list>
-        <ion-item *ngFor="let c of Angebot ">
-            <h2><strong>{{c.Bezeichnung}}</strong></h2>
-            <p> {{c.Details}}</p><p>Preis: {{c.Preis}} €</p>
-            <p>Ort: {{c.PLZ_Ort}}</p>
+        <ion-item *ngFor="let c of (Angebot)">
+            <h2><strong>{{(c && c.Bezeichnung) ? c.Bezeichnung : null}}</strong></h2>
+            <p> {{(c && c.Details) ? c.Details : null}}</p><p>Preis: {{(c && c.Preis) ? c.Preis : null}} €</p>
+            <p>Ort: {{(c && c.PLZ_Ort) ? c.PLZ_Ort : null}}</p>
             <button  ion-button block (click)="updateAngebot(c.ID,id_contact)">Auswählen</button>
         </ion-item>
     </ion-list>
+    <div>
+
+        <p> Heute gibt es leider noch keine Angebote! :(</p>
+    </div>
 
 </ion-content>
