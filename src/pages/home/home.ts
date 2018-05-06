@@ -37,16 +37,30 @@ constructor(public navCtrl: NavController, public navParams: NavParams, public h
     this.id_contact = this.navParams.get('ID');this.bname = this.navParams.get('Benutzername');this.nname = this.navParams.get('Nachname');this.vname = this.navParams.get('Vorname');this.email = this.navParams.get('Mail'); }
 
     updateAngebot(id_angebot, id_contact) {
-        let url = "http://shop2.iwslabor.de/api/updateBestellung.php";
-        var param = JSON.stringify({ id_angebot: id_angebot, id_contact: id_contact});
-        this.data = this.http.post(url, param);
-        this.data.subscribe(data => {  console.log(data)
-        });
+
         this.getAngebote();
         let alert = this.alertCtrl.create({
-            title: 'Das hat funktioniert!',
-            subTitle: 'Weitere Informationen kommen in einer seperaten Mail!',
-            buttons: ['Ok']});
+            title: 'Angebot annehmen!',
+            subTitle: 'Bist du sicher, dass du dieses Angebot annehmen möchtest?',
+            buttons: [
+                {
+                    text: 'Ablehnen',
+                    handler: () => {
+                    }
+                },
+                {
+                    text: 'Annehmen',
+                    handler: () => {
+                        let url = "http://shop2.iwslabor.de/api/updateBestellung.php";
+                        var param = JSON.stringify({ id_angebot: id_angebot, id_contact: id_contact});
+                        this.data = this.http.post(url, param);
+                        this.data.subscribe(data => {  console.log(data)
+                        });
+                        this.getAngebote();
+                    }
+                }
+            ]
+        });
     alert.present();
     }
 }
