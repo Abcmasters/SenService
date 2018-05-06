@@ -24,5 +24,5 @@ errorMessage: string;
                 error =>  this.errorMessage = <any>error);
     }
     ionViewDidLoad() {this.getAngebote();
-    this.bname = this.navParams.get('Benutzername');this.nname = this.navParams.get('Nachname');this.vname = this.navParams.get('Vorname');this.email = this.navParams.get('Mail'); }
+    this.bname = this.navParams.get('ID');this.navParams.get('Benutzername');this.nname = this.navParams.get('Nachname');this.vname = this.navParams.get('Vorname');this.email = this.navParams.get('Mail'); }
 }
