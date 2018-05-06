@@ -12,19 +12,15 @@ bname:any;
 vname:any;
 nname:any;
 email:any;
-Bezeichnung: string[];
+Angebot: string[];
 errorMessage: string;
   constructor(public navCtrl: NavController, public navParams: NavParams,  public network: NetworkEngineProvider ) {
-
   }
-    sort(){
-        this.descending = !this.descending;
-        this.order = this.descending ? 1 : -1;
-    }
+
     getAngebote() {
         this.network.getAngebote()
             .subscribe(
-                countries => this.Bezeichnung = countries,
+                angebot => this.Angebot = angebot,
                 error =>  this.errorMessage = <any>error);
     }
     ionViewDidLoad() {this.getAngebote();
