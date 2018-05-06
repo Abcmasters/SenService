@@ -15,7 +15,7 @@ bname:any;
 vname:any;
 nname:any;
 email:any;
-Angebot: string[];
+Angebot: any;
 errorMessage: string;
 data:any;
 constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient  ,  public network: NetworkEngineProvider, private alertCtrl: AlertController) {
@@ -24,13 +24,14 @@ constructor(public navCtrl: NavController, public navParams: NavParams, public h
     getAngebote() {
         this.network.getAngebote()
             .subscribe(
-                angebot => {  if(this.Angebot !=[]){let alert = this.alertCtrl.create({
+                angebot => {  if(this.Angebot == []){let alert = this.alertCtrl.create({
                     title: 'Oh nein! :(',
                     subTitle: 'Heute noch kein Angebot wir haben. Warten du musst!',
                     buttons: ['Ok']
                 });
                     alert.present();} else{this.Angebot = angebot}},
                 error =>  this.errorMessage = <any>error);
+        console.log(this.Angebot);
     }
     ionViewDidLoad() {this.getAngebote();
     this.id_contact = this.navParams.get('ID');this.bname = this.navParams.get('Benutzername');this.nname = this.navParams.get('Nachname');this.vname = this.navParams.get('Vorname');this.email = this.navParams.get('Mail'); }
