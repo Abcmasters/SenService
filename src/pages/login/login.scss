@@ -2,7 +2,7 @@ page-login {
   @import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:700';
 
   $font: 'Source Sans Pro', sans-serif;
-  $primary: #77898F;
+  $primary: #644cad;
   $second: #644cad;
   $third: #4426a8;
 
@@ -172,7 +172,7 @@ page-login {
     width: 100%;
     font-weight: bold;
     padding: 14px 0px;
-    border: 3px solid $primary;
+    border: 0px solid $primary;
     border-radius: 2px;
     position: relative;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
@@ -230,7 +230,7 @@ page-login {
     width: 100%;
     font-weight: bold;
     padding: 14px 0px;
-    border: 3px solid $primary;
+    border: 0px solid $primary;
     border-radius: 2px;
     position: relative;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
