@@ -8,7 +8,7 @@ import { AlertController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
-id_angebot:any;
+id_contact:any;
 bname:any;
 vname:any;
 nname:any;
@@ -25,5 +25,12 @@ errorMessage: string;
                 error =>  this.errorMessage = <any>error);
     }
     ionViewDidLoad() {this.getAngebote();
-    this.id_angebot = this.navParams.get('ID');this.bname = this.navParams.get('Benutzername');this.nname = this.navParams.get('Nachname');this.vname = this.navParams.get('Vorname');this.email = this.navParams.get('Mail'); }
+    this.id_contact = this.navParams.get('ID');this.bname = this.navParams.get('Benutzername');this.nname = this.navParams.get('Nachname');this.vname = this.navParams.get('Vorname');this.email = this.navParams.get('Mail'); }
+
+    updateAngebot() {
+        this.network.updateAngebot(id_angebot, id_contact)
+            .subscribe(
+                id_angebot => this.id_angebot = id_angebot,
+                id_contact => this.id_contact = id_contact);
+    }
 }

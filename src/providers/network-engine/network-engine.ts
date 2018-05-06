@@ -30,6 +30,15 @@ result:any;
     return request.toPromise();
 
   }
+   updateAngebot(id_angebot, id_contact) : Promise<any>
+    {
+        let url = "http://shop2.iwslabor.de/api/updateBestellung.php";
+        var param = JSON.stringify({ id_angebot: id_angebot, id_contact: id_contact});
+        let request = this.http.post(url, param);
+
+        return request.toPromise();
+
+    }
 
     private apiUrl = 'http://shop2.iwslabor.de/api/read_angebote.php/';
     getAngebote(): Observable<any[]> {
