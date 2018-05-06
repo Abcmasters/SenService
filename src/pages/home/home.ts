@@ -17,13 +17,16 @@ errorMessage: string;
   constructor(public navCtrl: NavController, public navParams: NavParams,  public network: NetworkEngineProvider ) {
 
   }
-
-    getCountries() {
-        this.network.getCountries()
+    sort(){
+        this.descending = !this.descending;
+        this.order = this.descending ? 1 : -1;
+    }
+    getAngebote() {
+        this.network.getAngebote()
             .subscribe(
                 countries => this.Bezeichnung = countries,
                 error =>  this.errorMessage = <any>error);
     }
-    ionViewDidLoad() {this.getCountries();
+    ionViewDidLoad() {this.getAngebote();
     this.bname = this.navParams.get('Benutzername');this.nname = this.navParams.get('Nachname');this.vname = this.navParams.get('Vorname');this.email = this.navParams.get('Mail'); }
 }
