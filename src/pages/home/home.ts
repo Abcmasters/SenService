@@ -8,6 +8,7 @@ import { AlertController } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
+id:any;
 bname:any;
 vname:any;
 nname:any;
@@ -24,5 +25,5 @@ errorMessage: string;
                 error =>  this.errorMessage = <any>error);
     }
     ionViewDidLoad() {this.getAngebote();
-    this.bname = this.navParams.get('ID');this.navParams.get('Benutzername');this.nname = this.navParams.get('Nachname');this.vname = this.navParams.get('Vorname');this.email = this.navParams.get('Mail'); }
+    this.id = this.navParams.get('ID');this.bname = this.navParams.get('Benutzername');this.nname = this.navParams.get('Nachname');this.vname = this.navParams.get('Vorname');this.email = this.navParams.get('Mail'); }
 }
