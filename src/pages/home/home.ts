@@ -4,6 +4,7 @@ import { RegistrierungPage} from "../registrierung/registrierung";
 import {NetworkEngineProvider} from "../../providers/network-engine/network-engine";
 import { AlertController } from 'ionic-angular';
 import {HttpClient} from "@angular/common/http";
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -17,7 +18,7 @@ email:any;
 Angebot: string[];
 errorMessage: string;
 data:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient  ,  public network: NetworkEngineProvider ) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient  ,  public network: NetworkEngineProvider) {
   }
 
     getAngebote() {
@@ -35,5 +36,6 @@ data:any;
         this.data = this.http.post(url, param);
         this.data.subscribe(data => {  console.log(data)
         });
+        this.getAngebote();
     }
 }
