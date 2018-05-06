@@ -14,7 +14,7 @@
             <h2><strong>{{c.Bezeichnung}}</strong></h2>
             <p> {{c.Details}}</p><p>Preis: {{c.Preis}} €</p>
             <p>Ort: {{c.PLZ_Ort}}</p>
-            <button ion-button secondary menuToggle>Auswählen</button>
+            <button  ion-button block (click)="updateAngebot(c.ID,id_contact)">Auswählen</button>
         </ion-item>
     </ion-list>
 

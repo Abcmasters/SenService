@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RegistrierungPage} from "../registrierung/registrierung";
 import {NetworkEngineProvider} from "../../providers/network-engine/network-engine";
 import { AlertController } from 'ionic-angular';
+import {HttpClient} from "@angular/common/http";
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -15,7 +16,8 @@ nname:any;
 email:any;
 Angebot: string[];
 errorMessage: string;
-  constructor(public navCtrl: NavController, public navParams: NavParams,  public network: NetworkEngineProvider ) {
+data:any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient  ,  public network: NetworkEngineProvider ) {
   }
 
     getAngebote() {
@@ -27,10 +29,11 @@ errorMessage: string;
     ionViewDidLoad() {this.getAngebote();
     this.id_contact = this.navParams.get('ID');this.bname = this.navParams.get('Benutzername');this.nname = this.navParams.get('Nachname');this.vname = this.navParams.get('Vorname');this.email = this.navParams.get('Mail'); }
 
-    updateAngebot() {
-        this.network.updateAngebot(id_angebot, id_contact)
-            .subscribe(
-                id_angebot => this.id_angebot = id_angebot,
-                id_contact => this.id_contact = id_contact);
+    updateAngebot(id_angebot, id_contact) {
+        let url = "http://shop2.iwslabor.de/api/updateBestellung.php";
+        var param = JSON.stringify({ id_angebot: id_angebot, id_contact: id_contact});
+        this.data = this.http.post(url, param);
+        this.data.subscribe(data => {  console.log(data)
+        });
     }
 }

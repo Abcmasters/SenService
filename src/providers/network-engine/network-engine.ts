@@ -13,6 +13,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class NetworkEngineProvider {
 result:any;
+data:any;
   constructor(public http: HttpClient) {
     console.log('Hello NetworkEngineProvider Provider');
   }
@@ -32,11 +33,8 @@ result:any;
   }
    updateAngebot(id_angebot, id_contact) : Promise<any>
     {
-        let url = "http://shop2.iwslabor.de/api/updateBestellung.php";
-        var param = JSON.stringify({ id_angebot: id_angebot, id_contact: id_contact});
-        let request = this.http.post(url, param);
 
-        return request.toPromise();
+        return this.data.toPromise();
 
     }
 
