@@ -35,13 +35,24 @@ this.network.writeTable(vname,n,bn,m,pw).then(data =>
     {
       console.log("Ich habe folgendes erhalten : " + JSON.stringify(data));
       this.responsetext="" + JSON.stringify(data);
+
+        if(data == 'Error'){ let alert = this.alertCtrl.create({
+            title: 'Error!',
+            subTitle: 'Irgendwas hat nicht geklappt!',
+            buttons: ['Ok']
+        });
+            alert.present();}
+        if(data == 'Erfolg'){ let alert = this.alertCtrl.create({
+            title: 'Erfolg!',
+            subTitle: 'Registrierung erfolgreich!',
+            buttons: ['Ok']
+        });
+            alert.present();}
+
+
     })
-      let alert = this.alertCtrl.create({
-          title: 'Erfolgreich!',
-          subTitle: 'Account wurde erstellt!',
-          buttons: ['Ok']
-      });
-      alert.present();
+
+
  this.navCtrl.pop();
   }
 
