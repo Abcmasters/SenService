@@ -32,7 +32,7 @@ result:any;
   }
 
     private apiUrl = 'http://shop2.iwslabor.de/api/read_angebote.php/';
-    getCountries(): Observable<any[]> {
+    getAngebote(): Observable<any[]> {
         return this.http.get(this.apiUrl).pipe(
             map(this.extractData),
             catchError(this.handleError)
