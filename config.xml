@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.sensorg.studium" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>senserv</name>
-    <description>SenServ ist eine tolle App</description>
+    <name>SenSorg</name>
+    <description>SenSorg ist eine tolle App</description>
     <author email="Sensorg@sensorg.fake" href="http://ionicframework.com/">SenSorg Team</author>
     <content src="index.html" />
     <access origin="*" />
