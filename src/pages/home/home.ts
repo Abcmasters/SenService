@@ -18,6 +18,24 @@ email:any;
 Angebot: any;
 errorMessage: string;
 data:any;
+    doRefresh(refresher) {
+        console.log('Begin async operation', refresher);
+        this.network.getAngebote()
+            .subscribe(
+                angebot => {  if(this.Angebot == []){let alert = this.alertCtrl.create({
+                    title: 'Oh nein! :(',
+                    subTitle: 'Heute noch kein Angebot wir haben. Warten du musst!',
+                    buttons: ['Ok']
+                });
+                    alert.present();} else{this.Angebot = angebot}},
+                error =>  this.errorMessage = <any>error);
+        console.log(this.Angebot);
+
+        setTimeout(() => {
+            console.log('Async operation has ended');
+            refresher.complete();
+        }, 2000);
+    }
 constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient  ,  public network: NetworkEngineProvider, private alertCtrl: AlertController) {
   }
 

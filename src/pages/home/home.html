@@ -8,6 +8,14 @@
 </ion-header>
 
 <ion-content padding>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+                pullingIcon="arrow-dropdown"
+                pullingText="Zum Aktualisieren runterziehen"
+                refreshingSpinner="circles"
+                refreshingText="Aktualisieren...">
+        </ion-refresher-content>
+    </ion-refresher>
   <h3>Angebote</h3>
     <ion-list>
         <ion-item *ngFor="let c of (Angebot)">
